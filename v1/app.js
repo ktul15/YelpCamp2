@@ -1,9 +1,12 @@
-const express   = require('express');
-const app       = express();
-const bodyParser = require('body-parser');
+const   express     = require('express'),
+        app         = express(),
+        bodyParser  = require('body-parser');
+        
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+
 
 const campgrounds = [
     {name: 'Prince Desert Camp', image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'},
