@@ -3,17 +3,14 @@ const   express         = require('express'),
         bodyParser      = require('body-parser'),
         mongoose        = require('mongoose');
 
+const Campground = require('./models/campground');
+
 mongoose.connect('mongodb://localhost/ycdb_2');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
-const campgroundSchema = new mongoose.Schema({
-    name:String,
-    image:String,
-    description: String
-});
-const Campground = mongoose.model('Campground', campgroundSchema);
+
 
 // Campground.create(
 //     {
