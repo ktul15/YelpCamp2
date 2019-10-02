@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/ycdb_2');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', (req, res) => {
