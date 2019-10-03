@@ -80,7 +80,7 @@ app.get('/campgrounds/:id', (req, res) => {
 //COMMENTS
 //================================================
 
-app.get('/campgrounds/:id/comments/new', (req, res) => {
+app.get('/campgrounds/:id/comments/new', isLoggedIn, (req, res) => {
     //find campground by provided id
     Campground.findById(req.params.id, (err, foundCampground) => {
         if(err) console.log(err);
@@ -130,6 +130,13 @@ app.post('/register', (req, res) => {
     })
 })
 
+//middleware
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.render('/login');
+}
 //show login form
 app.get('/login', (req, res) => {
     res.render('login');
@@ -148,6 +155,13 @@ app.get('/logout', (req, res) => {
     res.redirect('/campgrounds');
 })
 
+//middleware
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.render('login');
+}
 app.listen(8000, () => {
     console.log('Server Started!');
 })
