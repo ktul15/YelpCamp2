@@ -142,6 +142,12 @@ app.post('/login',
         }
 )
 
+//logout route
+app.get('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/campgrounds');
+})
+
 app.listen(8000, () => {
     console.log('Server Started!');
 })
