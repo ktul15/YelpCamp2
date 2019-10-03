@@ -111,10 +111,11 @@ app.post('/campgrounds/:id/comments', (req, res) => {
 //AUTH ROUTES
 //=============================================
 
+//show register form
 app.get('/register', (req, res) => {
     res.render('register');
 })
-
+//handle register logic
 app.post('/register', (req, res) => {
     const newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, (err, user) => {
@@ -128,6 +129,18 @@ app.post('/register', (req, res) => {
         }
     })
 })
+
+//show login form
+app.get('/login', (req, res) => {
+    res.render('login');
+})
+//handle login logic
+app.post('/login', 
+        passport.authenticate('local', {successRedirect: '/campgrounds', failureRedirect: '/login'}), 
+        (req, res) => {
+
+        }
+)
 
 app.listen(8000, () => {
     console.log('Server Started!');
