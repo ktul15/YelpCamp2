@@ -22,6 +22,11 @@ router.post('/', (req, res) => {
         Comment.create(req.body.comment, (err, newlyCreatedComment) => {
             if(err) console.log(err);
 
+            //add username and id to comment
+            newlyCreatedComment.author.id = req.user._id;
+            newlyCreatedComment.author.username = req.user.username;
+            //save comment
+            newlyCreatedComment.save();
             //connect new comment to campground
             foundCampground.comments.push(newlyCreatedComment);
             foundCampground.save();

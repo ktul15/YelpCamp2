@@ -12,7 +12,7 @@ const campgroundRoutes = require('./routes/campgrounds');
 const commentRoutes = require('./routes/comments');
 const indexRoutes = require('./routes/index');
 
-// seedDB();
+// seedDB(); //seed the database
 
 mongoose.connect('mongodb://localhost/ycdb_2');
 
