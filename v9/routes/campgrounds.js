@@ -54,6 +54,7 @@ router.get('/:id/edit', (req, res) => {
         res.render('campgrounds/edit', {campground: foundCampground}); 
     })
 })
+
 //UPDATE
 router.put('/:id', (req, res) => {
     //find and update the correct campground
@@ -62,6 +63,13 @@ router.put('/:id', (req, res) => {
     
         //redirect somewhere
         res.redirect('/campgrounds/' + req.params.id);
+    })
+})
+
+//DESTROY
+router.delete('/:id', (req, res) => {
+    Campground.findByIdAndDelete(req.params.id, (err, deletedCamground) => {
+        res.redirect('/campgrounds');
     })
 })
 
