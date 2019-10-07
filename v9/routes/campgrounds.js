@@ -59,10 +59,10 @@ router.put('/:id', (req, res) => {
     //find and update the correct campground
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCapground) => {
         if(err) console.log(err);
-
+    
+        //redirect somewhere
         res.redirect('/campgrounds/' + req.params.id);
     })
-    //redirect somewhere
 })
 
 //middleware
