@@ -23,30 +23,30 @@ const seeds = [
 function seedDB(){
     //remove all campgrounds
     Campground.remove({}, (err) => {
-        if(err) console.log(err);
-        console.log('removed Campgrounds');
+        // if(err) console.log(err);
+        // console.log('removed Campgrounds');
 
-        //add a few campgrounds
-        seeds.forEach(function(seed){
-            Campground.create(seed, (err, newlyCreatedCampground) => {
-                if(err) console.log(err);
-                console.log('Added a capground');
+        // //add a few campgrounds
+        // seeds.forEach(function(seed){
+        //     Campground.create(seed, (err, newlyCreatedCampground) => {
+        //         if(err) console.log(err);
+        //         console.log('Added a capground');
 
-                //create a comment
-                Comment.create(
-                    {
-                        text: 'text',
-                        author: 'author'
-                    }, (err, newlyCreatedComment) => 
-                    {
-                        if(err) console.log(err);
-                        newlyCreatedCampground.comments.push(newlyCreatedComment);
-                        newlyCreatedCampground.save();
-                        console.log('Created a new comment.');
-                    }
-                )
-            })
-        })
+        //         //create a comment
+        //         Comment.create(
+        //             {
+        //                 text: 'text',
+        //                 author: 'author'
+        //             }, (err, newlyCreatedComment) => 
+        //             {
+        //                 if(err) console.log(err);
+        //                 newlyCreatedCampground.comments.push(newlyCreatedComment);
+        //                 newlyCreatedCampground.save();
+        //                 console.log('Created a new comment.');
+        //             }
+        //         )
+        //     })
+        // })
     })
 }
 
