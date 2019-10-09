@@ -30,9 +30,29 @@ router.post('/', (req, res) => {
             //connect new comment to campground
             foundCampground.comments.push(newlyCreatedComment);
             foundCampground.save();
-            //redirect
-            res.redirect('/campgrounds/' + foundCampground._id);
+            
         })
+    })
+})
+
+//comment edit
+router.get('/:comment_id/edit', (req, res) => {
+    //find comment by id 
+    Comment.findById(req.params.comment_id, (err, foundComment) => {
+        if(err) res.redirect('back');
+
+        res.render('comments/edit', {campground_id: req.params.id, comment: foundComment});
+    })
+    
+})
+
+//comment update
+router.put('/:comment_id', (req, res) => {
+    //find comment by provided id and update
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, updatedComment) => {
+        if(err) res.redirect('back');
+
+        res.redirect('/campgrounds/' + req.params.id);
     })
 })
 
