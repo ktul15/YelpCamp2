@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
             //connect new comment to campground
             foundCampground.comments.push(newlyCreatedComment);
             foundCampground.save();
-            
+            res.redirect('/campgrounds/' + req.params.id);
         })
     })
 })
